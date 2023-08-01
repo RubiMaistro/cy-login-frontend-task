@@ -1,0 +1,209 @@
+/* Greeting / Homepage design */
+
+.Greeting-Container {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1.5em;
+  max-width: 40vw;
+  margin: 0;
+  padding: 0;
+  text-align: start;
+  font-size: 16px;
+}
+
+.acme-logo {
+  content: url('../resources/acme@3x.png');
+  margin-bottom: .5em;
+  opacity: 1;
+  animation-name: fadeIn;
+  -webkit-animation-name: fadeIn; 
+  animation-duration: .8s;   
+  -webkit-animation-duration: .8s;
+  animation-timing-function: linear; 
+  -webkit-animation-timing-function: linear;     
+  visibility: visible !important; 
+}
+
+.Greeting-Title {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 30px;
+  font-weight: 600;
+  margin: inherit;
+  padding: inherit;
+  animation-name: slide-in-right ;
+  -webkit-animation-name: slide-in-right ; 
+  animation-duration: 1s;   
+  -webkit-animation-duration: 1s;
+  animation-timing-function: linear; 
+  -webkit-animation-timing-function: linear;
+}
+
+.Greeting-Text {
+  font-weight: 400;
+  margin: inherit;
+  padding: inherit;
+  text-align: justify;
+}
+
+button.Greeting-Login-Btn {
+  padding: .6em 1.8em;
+  border: solid 2px #fff;
+  border-radius: 6px;
+  background-color: transparent;
+  font-size: 16px;
+  text-decoration: none;
+  transition: all ease-in .3s;
+  animation-name: slide-in-top ;
+  -webkit-animation-name: slide-in-top ; 
+  animation-duration: .6s;   
+  -webkit-animation-duration: .6s;
+  animation-timing-function: linear; 
+  -webkit-animation-timing-function: linear;
+}
+
+button.Greeting-Login-Btn:hover{
+  background-color: #fff;
+  border-color: transparent;
+  cursor: pointer;
+  box-shadow: none;
+  text-shadow: none;
+}
+
+.Greeting-Login-Btn .Login-Link {
+  color: #fff;
+  text-decoration: none;
+  border: none;
+  font-size: 14px;
+}
+
+button.Greeting-Login-Btn:hover .Login-Link {
+  color: #000;
+  transition: all ease-in-out .4s;
+}
+
+/* Animations */
+
+@keyframes appearing {
+  0% {
+    display: none;
+  }
+
+  100% {
+    display: block;
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-top {
+  0% {
+    transform: translateY(50%);
+    opacity: 0;
+  }
+
+  100% {
+      transform: translateX(0);
+      opacity: 1;
+  }
+}
+
+@keyframes slide-in-bottom {
+  0% {
+      transform: translateY(-20%);
+      opacity: 0;
+  }
+
+  100% {
+      transform: translateY(0);
+      opacity: 1;
+  }
+}
+
+@keyframes slide-in-right {
+  0% {
+      transform: translateX(10%);
+      opacity: 0;
+  }
+
+  60% {
+    transform: translateX(-10%);
+    opacity: .7;
+  }
+
+  100% {
+      transform: translateX(0);
+      opacity: 1;
+  }
+}
+
+@keyframes slide-in-top {
+  0% {
+    transform: translateY(50%);
+    opacity: 0;
+  }
+
+  100% {
+      transform: translateX(0);
+      opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+      transform: scale(0.7);
+      opacity: .3;       
+  }
+  100% {
+      transform: scale(1);
+      opacity: 1; 
+  }       
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+      -webkit-transform: scale(0.7);
+      opacity: .3;       
+  }
+  100% {
+      -webkit-transform: scale(1);
+      opacity: 1; 
+  }       
+}
+
+/* Responsive Web Design */
+
+@media screen and (max-width: 1024px) {
+  .acme-logo {
+    content: url('../resources/acme@2x.png');
+  }
+
+  .Greeting-Title {
+    font-size: 28px;
+  }
+
+  .Greeting-Container {
+    max-width: 50vw;
+  }
+
+}
+
+@media screen and (max-width: 768px) {
+  .acme-logo {
+    content: url('../resources/acme.png');
+  }
+
+  .Greeting-Title {
+    font-size: 25px;
+  }
+
+  .Greeting-Container {
+    max-width: 60vw;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .Greeting-Container {
+    max-width: 70vw;
+  }
+}
