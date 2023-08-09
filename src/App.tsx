@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
-import Login from './pages/Login';
+import Login from './pages/Register';
 import Home from './pages/Home';
 import { AuthContextProvider } from './context/AuthContext';
 

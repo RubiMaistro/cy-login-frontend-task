@@ -1,20 +1,14 @@
 import { useState } from "react";
 import { User } from "../models/User";
-import { LoginData } from "../models/Login";
+import { RegisterData, RegisterResponse } from "../models/Register";
 import axios from "axios";
 import { useAuth } from "./useAuth";
 
 export type UseLogin = () => {
   loading: boolean;
   error?: string;
-  login: (credentials: LoginData) => Promise<boolean>;
+  login: (credentials: RegisterData) => Promise<boolean>;
 };
-
-type LoginResponse = {
-  result: Partial<User> & {
-    error?: string;
-  };
-}
 
 const useLogin: UseLogin = () => {
 
@@ -25,11 +19,11 @@ const useLogin: UseLogin = () => {
   const [error, setError] = useState<string | undefined>();
 
 
-  const login = async (data: LoginData): Promise<boolean> => {
+  const login = async (data: RegisterData): Promise<boolean> => {
     try {
       setLoading(true);
 
-      const response = await axios.post<LoginResponse>('https://us-central1-ria-server-b1103.cloudfunctions.net/authenticate', {data});
+      const response = await axios.post<RegisterResponse>('https://us-central1-ria-server-b1103.cloudfunctions.net/authenticate', {data});
   
       const responseData = response.data;
 
