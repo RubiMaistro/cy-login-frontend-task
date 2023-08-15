@@ -7,7 +7,7 @@ const Home = () : JSX.Element => {
   return (
     <div className={'d-flex flex-column'}>
       <Greeting />
-      <pre>{JSON.stringify({user}, null, 2)}</pre>
+      { user !== undefined ? <pre>{JSON.stringify({user}, null, 2)}</pre> : null }
     </div>
   );
 };

@@ -5,6 +5,9 @@ import { useAuth } from '../hooks/useAuth';
 import useLogin from '../hooks/useLogin';
 import { TextField, Box } from '@mui/material';
 import '../css/Register.css'
+import PasswordStrength from '../components/PasswordStrength';
+import usePasswordStrengthChecker from '../hooks/usePasswordStrengthChecker';
+import { useState } from 'react';
 
 export default function Register () {
 
@@ -15,11 +18,19 @@ export default function Register () {
     }
   });
 
-  const {register, handleSubmit} = form;
-
+  const {register, getValues, handleSubmit} = form;
   const {loading, login, error} = useLogin();
-
   const {user, clearUser} = useAuth();
+
+  const {strength, strengthChecker} = usePasswordStrengthChecker();
+  const passwordChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    strengthChecker(event.target.value);
+  }
+
+  const [passwordShown, setPasswordShown] = useState(false);
+  const togglePassword = () => {
+    setPasswordShown(!passwordShown);
+  };
 
   return (
     <div className='Register-Container'>
@@ -38,25 +49,34 @@ export default function Register () {
             type='text'
             placeholder='test@codeyard.eu'
             variant="standard" />
-          <TextField
-            {...register('password')}
-            className='Input-Field'
-            id="standard-password-input"
-            label="Password"
-            type="password"
-            placeholder='letmein'
-            autoComplete="current-password"
-            variant="standard"
-            />
+            <div className='Input-Field-Container'>
+              <TextField
+              {...register('password')}
+              className='Input-Field'
+              id="standard-password-input"
+              label="Password"
+              type={passwordShown ? "text" : "password"}
+              placeholder='letmein'
+              autoComplete="current-password"
+              variant="standard"
+              onChange={passwordChangeHandler} />
+              <div className='Input-Field-Float-Actions'>
+                <img className={passwordShown ? "Show-Password-Toggle" : "Hide-Password-Toggle"} 
+                onClick={togglePassword}
+                alt="fa-eye-slash"/>
+                <div className={"Password-Strength " + strength}></div>
+              </div>
+            </div>
           </Box>
           <div className='Remember-Me'>
             <input type="checkbox" />
             <span>Remember me.</span>
           </div>
           <div className='Button-Container'>
-          <button className='Sign-Up-Btn' onClick={handleSubmit(login)}>Sign Up</button>
-          <Link className='Go-Home-Btn' to="/">Go Home</Link>
+            <button className='Sign-Up-Btn' onClick={handleSubmit(login)}>Sign Up</button>
+            <Link className='Go-Home-Btn' to="/">Go Home</Link>
           </div>
+          
         </div>
       </div>
       {

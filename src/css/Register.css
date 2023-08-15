@@ -60,9 +60,68 @@
   font-size: 16px;
 }
 
+.Register-Form-Main .Input-Field-Container {
+  position: relative;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  width: 100%;
+  font-size: 16px;
+}
+
 .Register-Form-Main .Input-Field {
   width: 100%;
   font-size: 16px;
+}
+
+.Register-Form-Main .Input-Field-Container .Input-Field-Float-Actions {
+  position: absolute;
+  right: 0;
+  bottom: .5em;
+  display: flex;
+  flex-flow: row nowrap;
+  gap: .2em;
+  justify-content: center;
+  width: fit-content;
+}
+
+.Input-Field-Container .Input-Field-Float-Actions .Show-Password-Toggle,
+.Input-Field-Container .Input-Field-Float-Actions .Hide-Password-Toggle {
+  object-fit: contain;
+  width: fit-content;
+  height: fit-content;
+}
+
+.Input-Field-Container .Show-Password-Toggle {
+  content: url('../resources/fa-eye-slash.png');
+}
+
+.Input-Field-Container .Hide-Password-Toggle {
+  content: url('../resources/fa-eye.png');
+}
+
+.Input-Field-Container .Input-Field-Float-Actions .Password-Strength {
+  width: 7px;
+  height: 7px;
+  border: none;
+  border-radius: 50%;
+  background-color: #BEBEBE;
+}
+
+.Input-Field-Container .Input-Field-Float-Actions .Password-Strength.Unacceptable {
+  background-color: #e20b07;
+}
+.Input-Field-Container .Input-Field-Float-Actions .Password-Strength.Weak {
+  background-color: #ff7a00;
+}
+.Input-Field-Container .Input-Field-Float-Actions .Password-Strength.Average {
+  background-color: #ebbd04;
+}
+.Input-Field-Container .Input-Field-Float-Actions .Password-Strength.Good {
+  background-color: #0b75ed;
+}
+.Input-Field-Container .Input-Field-Float-Actions .Password-Strength.Strong {
+  background-color: #01a917;
 }
 
 .Register-Form-Main .Remember-Me {
@@ -154,3 +213,20 @@
     color: #fff;
   }
   
+/* Responsive Web Design */
+@media screen and (max-width: 768px) {
+  .Input-Field-Container .Show-Password-Toggle {
+    content: url('../resources/fa-eye-slash@2x.png');
+  }
+  .Input-Field-Container .Hide-Password-Toggle {
+    content: url('../resources/fa-eye@2x.png');
+  }
+}
+@media screen and (max-width: 480px) {
+  .Register-Form-Main .Input-Field-Container .Show-Password-Toggle {
+    content: url('../resources/fa-eye-slash@3x.png');
+  }
+  .Input-Field-Container .Hide-Password-Toggle {
+    content: url('../resources/fa-eye@3x.png');
+  }
+}
